@@ -1,0 +1,15 @@
+.ListItem {
+  display: flex;
+  padding: 5px;
+  margin: 5px auto;
+  justify-content: center;
+  width: auto;
+}
+
+.ListItem button {
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+  margin: 2px 50px;
+}

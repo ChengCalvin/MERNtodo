@@ -1,0 +1,20 @@
+body {
+  background-color: lightblue;
+}
+
+.App {
+  background-color: rgb(236, 26, 236);
+  min-height: 500px;
+  width: 400px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid pink;
+}
+
+@media (min-width: 300px) {
+  .App {
+    width: 300px;
+  }
+}
