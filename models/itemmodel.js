@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //Schema
 const ItemSchema = new Schema({
-  data: {
+  listItem: {
     type: String,
     required: true,
   },
@@ -13,4 +13,4 @@ const ItemSchema = new Schema({
   },
 });
 
-module.exports = item = mongoose.model("item", ItemSchema);
+module.exports = listItem = mongoose.model("listItem", ItemSchema);
