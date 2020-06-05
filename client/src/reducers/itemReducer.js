@@ -21,12 +21,13 @@ export default function (state = initialState, action) {
     case DELETE_ITEM:
       return {
         ...state,
-        listItem: state.listItems.filter(
+        listItems: state.listItems.filter(
           (listitems) => listitems.id !== action.payload
         ),
       };
     case ADD_ITEM:
       return {
+        //payload is the new item sent by the action
         ...state,
         listItems: [action.payload, ...state.listItems],
       };

@@ -9,8 +9,8 @@ require("dotenv").config();
 const app = express();
 
 //express config
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
 
 //config routes

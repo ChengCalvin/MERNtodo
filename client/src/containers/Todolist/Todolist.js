@@ -9,6 +9,9 @@ import { getItems, deleteItems, addItem } from "../../actions/itemActons";
 import PropTypes from "prop-types";
 
 class Todolist extends Component {
+  state = {
+    listitem: "",
+  };
   componentDidMount() {
     this.props.getItems();
     //console.log(this.props.getItems);
@@ -17,16 +20,15 @@ class Todolist extends Component {
 
   inputHandler = (event) => {
     this.setState({
-      [event.target.listitems]: event.target.value,
+      listitem: event.target.value,
     });
   };
 
   onSubmitHandler = (event) => {
     event.preventDefault();
     const newItem = {
-      listItems: this.state.currentItems.text,
+      listitem: this.state.listitem,
     };
-
     // additem via additem action
     this.props.addItem(newItem);
   };
@@ -37,14 +39,14 @@ class Todolist extends Component {
 
   render() {
     const { listItems } = this.props.item;
-    console.log(this.props.item);
+    //console.log(this.props.item);
     //console.log("hello");
     return (
       <div className="Todolist">
         <form onSubmit={this.onSubmitHandler}>
           <input
             type="text"
-            listitems="listitems"
+            listitem="listitem"
             id="item"
             onChange={this.inputHandler}
             placeholder="Add List Item"

@@ -14,10 +14,10 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   const newItem = new Item({
-    listItem: req.body.listItem,
+    listItem: req.body.listitem,
   });
-  newItem.save().then((listItems) => {
-    listItems && res.json(listItems);
+  newItem.save().then((listItem) => {
+    res.json(listItem);
   });
 });
 
