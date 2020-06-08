@@ -10,7 +10,6 @@ export const getItems = () => (dispatch) => {
   axios
     .get("/api/items")
     .then((res) => {
-      //console.log(res);
       dispatch({
         type: GET_ITEMS,
         payload: res.data,
@@ -19,13 +18,13 @@ export const getItems = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const deleteItems = (id) => {
-  return {
-    //go to the reducer for the action
-    //send payload id to itemreducer
-    type: DELETE_ITEM,
-    payload: id,
-  };
+export const deleteItems = (id) => (dispatch) => {
+  axios.delete(`/api/items/${id}`).then((res) => {
+    dispatch({
+      type: DELETE_ITEM,
+      payload: id,
+    });
+  });
 };
 
 export const addItem = (item) => (dispatch) => {

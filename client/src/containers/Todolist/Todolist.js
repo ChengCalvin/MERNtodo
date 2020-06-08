@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-//import axios from "axios";
-//import axios from "../../axios-list";
 import ListItem from "../../components/ListItem/ListItem";
 import "./Todolist.css";
 //import Spinner from "../../components/UI/Spinner";
@@ -14,8 +12,6 @@ class Todolist extends Component {
   };
   componentDidMount() {
     this.props.getItems();
-    //console.log(this.props.getItems);
-    //this.props.deleteItems();
   }
 
   inputHandler = (event) => {
@@ -39,8 +35,6 @@ class Todolist extends Component {
 
   render() {
     const { listItems } = this.props.item;
-    //console.log(this.props.item);
-    //console.log("hello");
     return (
       <div className="Todolist">
         <form onSubmit={this.onSubmitHandler}>
@@ -55,11 +49,11 @@ class Todolist extends Component {
         </form>
         <div className="List">
           {listItems &&
-            listItems.map((listitems, id) => (
+            listItems.map((listitems) => (
               <ListItem
-                key={id}
+                key={listitems._id}
                 text={listitems.listItem}
-                clicked={this.onDeleteHandler}
+                clicked={this.onDeleteHandler.bind(this, listitems._id)}
               />
             ))}
         </div>

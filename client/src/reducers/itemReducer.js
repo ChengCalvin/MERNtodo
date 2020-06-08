@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         listItems: state.listItems.filter(
-          (listitems) => listitems.id !== action.payload
+          (listitems) => listitems._id !== action.payload
         ),
       };
     case ADD_ITEM:
