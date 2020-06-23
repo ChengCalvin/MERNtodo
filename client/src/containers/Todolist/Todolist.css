@@ -2,30 +2,9 @@
   width: 300px;
   height: auto;
 }
-.Todolist form {
-  margin: 15px auto;
-  display: flex;
-  justify-content: center;
-}
-
-.Todolist form input {
-  margin: 5px;
-  padding: 4px;
-  border: none;
-  border-radius: 3px;
-  outline: none;
-}
-
-.Todolist form button {
-  border: none;
-  border-radius: 30px;
-  outline: none;
-  cursor: pointer;
-  margin: 10px 2px;
-}
 
 .List {
-  width: auto;
+  width: 300px;
   padding: 10px 0;
 }
 

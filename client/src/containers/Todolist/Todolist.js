@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import ListItem from "../../components/ListItem/ListItem";
+import InputBox from "../../components/InputBoxes/InputBox/InputBox";
+import InputDescription from "../../components/InputBoxes/InputDescription/InputDescription";
+import AddButton from "../../components/UI/Buttons/AddButton/AddButton";
 import "./Todolist.css";
 //import Spinner from "../../components/UI/Spinner";
 import { connect } from "react-redux";
@@ -9,14 +12,20 @@ import PropTypes from "prop-types";
 class Todolist extends Component {
   state = {
     listitem: "",
+    itemdes: "",
   };
   componentDidMount() {
     this.props.getItems();
   }
 
-  inputHandler = (event) => {
+  inputItemHandler = (event) => {
     this.setState({
       listitem: event.target.value,
+    });
+  };
+  inputDesHandler = (event) => {
+    this.setState({
+      itemdes: event.target.value,
     });
   };
 
@@ -24,8 +33,8 @@ class Todolist extends Component {
     event.preventDefault();
     const newItem = {
       listitem: this.state.listitem,
+      itemdes: this.state.itemdes,
     };
-    // additem via additem action
     this.props.addItem(newItem);
   };
 
@@ -37,22 +46,26 @@ class Todolist extends Component {
     const { listItems } = this.props.item;
     return (
       <div className="Todolist">
-        <form onSubmit={this.onSubmitHandler}>
-          <input
-            type="text"
+        <div className="Input">
+          <InputBox
             listitem="listitem"
             id="item"
-            onChange={this.inputHandler}
-            placeholder="Add List Item"
+            onChange={this.inputItemHandler}
           />
-          <button type="submit">+</button>
-        </form>
+          <InputDescription
+            itemdes="itemdes"
+            id="itemd"
+            onChange={this.inputDesHandler}
+          />
+          <AddButton clicked={this.onSubmitHandler} />
+        </div>
         <div className="List">
           {listItems &&
             listItems.map((listitems) => (
               <ListItem
                 key={listitems._id}
                 text={listitems.listItem}
+                idescription={listitems.itemDes}
                 clicked={this.onDeleteHandler.bind(this, listitems._id)}
               />
             ))}

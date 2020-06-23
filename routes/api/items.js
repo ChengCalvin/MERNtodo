@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newItem = new Item({
     listItem: req.body.listitem,
+    itemDes: req.body.itemdes,
   });
   newItem.save().then((listItem) => {
     res.json(listItem);

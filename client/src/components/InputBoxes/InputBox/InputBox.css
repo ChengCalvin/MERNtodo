@@ -1,0 +1,6 @@
+.TaskTitle {
+  border-radius: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+}
