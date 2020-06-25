@@ -12,8 +12,9 @@ const InputBox = (props) => {
     <div className="TaskTitle">
       <input
         type="text"
-        listitem={props.listitem}
         id={props.id}
+        value={props.value}
+        maxLength="20"
         onChange={changeHandler}
         placeholder="Enter Task"
       />

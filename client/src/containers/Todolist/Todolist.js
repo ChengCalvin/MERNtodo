@@ -4,7 +4,7 @@ import InputBox from "../../components/InputBoxes/InputBox/InputBox";
 import InputDescription from "../../components/InputBoxes/InputDescription/InputDescription";
 import AddButton from "../../components/UI/Buttons/AddButton/AddButton";
 import "./Todolist.css";
-//import Spinner from "../../components/UI/Spinner";
+import Spinner from "../../components/UI/Spinner";
 import { connect } from "react-redux";
 import { getItems, deleteItems, addItem } from "../../actions/itemActons";
 import PropTypes from "prop-types";
@@ -30,12 +30,15 @@ class Todolist extends Component {
   };
 
   onSubmitHandler = (event) => {
-    event.preventDefault();
     const newItem = {
       listitem: this.state.listitem,
       itemdes: this.state.itemdes,
     };
     this.props.addItem(newItem);
+    this.setState({
+      listitem: "",
+      itemdes: "",
+    });
   };
 
   onDeleteHandler = (id) => {
@@ -48,19 +51,22 @@ class Todolist extends Component {
       <div className="Todolist">
         <div className="Input">
           <InputBox
-            listitem="listitem"
             id="item"
+            value={this.state.listitem}
             onChange={this.inputItemHandler}
           />
           <InputDescription
-            itemdes="itemdes"
             id="itemd"
+            value={this.state.itemdes}
             onChange={this.inputDesHandler}
           />
           <AddButton clicked={this.onSubmitHandler} />
         </div>
         <div className="List">
-          {listItems &&
+          {this.props.item.loading ? (
+            <Spinner />
+          ) : (
+            listItems &&
             listItems.map((listitems) => (
               <ListItem
                 key={listitems._id}
@@ -68,7 +74,8 @@ class Todolist extends Component {
                 idescription={listitems.itemDes}
                 clicked={this.onDeleteHandler.bind(this, listitems._id)}
               />
-            ))}
+            ))
+          )}
         </div>
       </div>
     );
@@ -80,7 +87,9 @@ Todolist.propTypes = {
   item: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ item: state.item }); // item from itemReducer
+const mapStateToProps = (state) => ({
+  item: state.item,
+}); // item from itemReducer
 export default connect(mapStateToProps, { getItems, deleteItems, addItem })(
   Todolist
 );

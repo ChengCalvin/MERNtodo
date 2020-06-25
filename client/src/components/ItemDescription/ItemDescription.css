@@ -1,0 +1,5 @@
+.ItemDescription {
+  width: 90px;
+  flex-shrink: 1;
+  flex-wrap: wrap;
+}

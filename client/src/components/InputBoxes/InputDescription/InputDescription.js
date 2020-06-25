@@ -11,8 +11,9 @@ const InputDescription = (props) => {
     <div className="InputDescription">
       <input
         type="text"
-        itemdes={props.itemdes}
         id={props.id}
+        value={props.value}
+        maxLength="250"
         onChange={changeHandler}
         placeholder="Details"
       />
